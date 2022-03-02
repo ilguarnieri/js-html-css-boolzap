@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* sfondo */
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* app */
+.app-wrapper{
+    width: 1440px;
+    height: calc(100% - 17px - 17px);
+
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: salmon;
+}
+
+/* media queery */
+@media screen and (max-width: 1440px){
+    .app-wrapper{
+        border-radius: 0;
+        height: 100%;
+    }
+}

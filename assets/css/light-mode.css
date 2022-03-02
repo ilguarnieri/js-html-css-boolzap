@@ -1,0 +1,5 @@
+/* colore sfondo */
+body{
+    background: linear-gradient(#00a884 150px, #e6e3de 150px, #d1d7db calc(100% - 150px));
+}
+
