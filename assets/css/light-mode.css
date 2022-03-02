@@ -1,5 +1,12 @@
-/* colore sfondo */
+/**************** color ****************/
+:root {
+    --bs-header: #F0F2F5;
+    --bs-white: #FFFFFF;
+    --bs-border: #E9EDEF;
+    --bs-icon: #54656f;
+}
+
+/**************** colore sfondo ****************/
 body{
     background: linear-gradient(#00a884 150px, #e6e3de 150px, #d1d7db calc(100% - 150px));
 }
-
