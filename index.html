@@ -36,34 +36,33 @@
 
             <!-- contacts -->
             <ul class="contacts-side">
-                <ul>
-                    <li class="contact">
-                        <!-- img -->
-                        <div class="avatar_wrapper">
-                            <figure class="avatar">
-                                <img src="assets/img/user.jpeg" alt="nome">
-                            </figure>
+                <li v-for="element in contacts" class="contact">
+                    <!-- img -->
+                    <div class="avatar_wrapper">
+                        <figure class="avatar">
+                            <img :src= "element.avatar" :alt="element.name">
+                        </figure>
+                    </div>
+                    
+                    <div class="contact_info">
+                        <!-- nome -->
+                        <div class="contact_name_date">
+                            <h4 class="contact_name">{{element.name}} {{element.last_name}}</h4>
+                            <p class="msg_data">ieri</p>
                         </div>
                         
-                        <div class="contact_info">
-                            <!-- nome -->
-                            <div class="contact_name_date">
-                                <h4 class="contact_name">Angelo Guarnieri</h4>
-                                <p class="msg_data">ieri</p>
-                            </div>
-
-                            <!-- messaggio -->
-                            <div class="msg_preview">
-                                <p>Ciao come stai?</p>
-                            </div>
+                        <!-- messaggio -->
+                        <div class="msg_preview">
+                            <p>Ciao come stai?</p>
                         </div>
-                    </li>
-                </ul>
-                
+                    </div>
+                </li>
             </ul>
         </div>
 
-
+        <div class="chat-wrapper col-chat">
+                        
+        </div>
     </section>
 
     <script src="assets/js/app.js"></script>    

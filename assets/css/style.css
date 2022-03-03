@@ -14,6 +14,10 @@ img{
     width: calc((100% / 12) * 3.5);
 }
 
+.col-chat{
+    width: calc((100% / 12) * (12 - 3.5));
+}
+
 /* SCROLL-BAR STYLE */
 ::-webkit-scrollbar {
     width: 5px;
@@ -39,6 +43,7 @@ body{
     border-radius: 20px;
     overflow: hidden;
     transition: all 350ms ease-in-out;
+    display: flex;
 }
 
 /******************************* side-bar *******************************/
@@ -142,6 +147,7 @@ body{
 
 .contact_name{
     font-size: 17px;
+    font-weight: 500;
 }
 
 .msg_data{
@@ -154,6 +160,14 @@ body{
     font-size: 14px;
     color: var(--bs--chat);
 }
+
+/******************************* chat  *******************************/
+.chat-wrapper{
+    background-color: salmon;
+    flex-grow: 1;
+}
+
+
 
 
 
@@ -170,19 +184,28 @@ body{
 @media screen and (max-width: 1300px){
     .col-side{
         width: calc((100% / 12) * 4.2);
-    } 
+    }
+    .col-chat{
+        width: calc((100% / 12) * (12 - 4.2));
+    }
 }
 
 @media screen and (max-width: 900px){
     .col-side{
         width: calc((100% / 12) * 4.8);
-    }   
+    }
+    .col-chat{
+        width: calc((100% / 12) * (12 - 4.8));
+    }
 }
 
 @media screen and (max-width: 750px){
     .side-bar{
         min-width: 300px;
-    }   
+    }
+    .col-chat{
+        min-width: 450px;
+    }
 }
 
 
