@@ -2,6 +2,9 @@ const app = new Vue({
     el: '#app',
     data: {
         activeContact: null,
+        inputActive: false,
+        newMessageText: '',
+        newMessage: undefined,
         contacts: [
             {
                 name: 'Mamma',
@@ -22,6 +25,29 @@ const app = new Vue({
                     {
                         date: '10/01/2020 16:15:22',
                         text: 'Tutto fatto!',
+                        status: 'received'
+                    }
+                ],
+            },
+            {
+                name: 'Luciano',
+                last_name: 'Rosati',
+                avatar: 'assets/img/av_2.jpeg',
+                visible: true,
+                messages: [
+                    {
+                        date: '28/03/2020 10:10:40',
+                        text: 'La Marianna va in campagna',
+                        status: 'received'
+                    },
+                    {
+                        date: '28/03/2020 10:20:10',
+                        text: 'Sicuro di non aver sbagliato chat?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '28/03/2020 16:15:22',
+                        text: 'Ah scusa!',
                         status: 'received'
                     }
                 ],
@@ -50,29 +76,6 @@ const app = new Vue({
                 ],
             },
             {
-                name: 'Luciano',
-                last_name: 'Rosati',
-                avatar: 'assets/img/av_2.jpeg',
-                visible: true,
-                messages: [
-                    {
-                        date: '28/03/2020 10:10:40',
-                        text: 'La Marianna va in campagna',
-                        status: 'received'
-                    },
-                    {
-                        date: '28/03/2020 10:20:10',
-                        text: 'Sicuro di non aver sbagliato chat?',
-                        status: 'sent'
-                    },
-                    {
-                        date: '28/03/2020 16:15:22',
-                        text: 'Ah scusa!',
-                        status: 'received'
-                    }
-                ],
-            },
-            {
                 name: 'Donato',
                 last_name: 'Palmisano',
                 avatar: 'assets/img/av_4.jpeg',
@@ -93,18 +96,43 @@ const app = new Vue({
         ]
     },
     methods: {
+        //active contact
         selectContact: function (contact){
             this.activeContact = contact;
         },
 
+        //last msg view in sidebar
         lastMsgReceived: function(index){
             const msg = this.contacts[index].messages;
             const indexLast = msg.length - 1;
 
             return msg[indexLast];
+        },
+
+        //time for msg
+        getHours: function(date){
+            const ora = date.split(' ')[1];
+            return ora.substring(0,5);
+        },
+
+        //send msg
+        sendMessage: function(){
+            const d = new Date();
+            let ora;
+
+            //add zero for hours < 10
+            if(d.getHours()< 10){
+                ora = `0${d.getHours()}`;
+            }
+
+            //stamp msg
+            this.newMessage = {
+                date: `${d.getDay()}/${d.getMonth()}/${d.getFullYear()} ${ora}:${d.getMinutes()}:${d.getMilliseconds()}`,
+                text: this.newMessageText,
+                status: 'sent'
+            }
+            this.activeContact.messages.push(this.newMessage);
+            this.newMessageText = '';
         }
-
-
-
     }
 })

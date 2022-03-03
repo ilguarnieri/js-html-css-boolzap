@@ -51,7 +51,7 @@
                         <!-- name -->
                         <div class="contact_name_date">
                             <h4 class="contact_name">{{element.name}} {{element.last_name}}</h4>
-                            <p class="msg_last_data">ieri</p>
+                            <p class="msg_last_data">{{ getHours(lastMsgReceived(index).date) }}</p>
                         </div>
                         
                         <!-- last msg -->
@@ -99,7 +99,7 @@
                     <div  class="messages-wrapper">
 
                         <!-- msg sent -->                     
-                        <div  v-for="msg in activeContact.messages" :class="msg.status == 'sent' ? 'sent' : 'received'" class="message" >
+                        <div  v-for="msg in activeContact.messages" :class="msg.status" class="message">
                             <!-- text -->
                             <div class="msg_text">
                                 <span>
@@ -109,10 +109,10 @@
                             </div>
                             <!-- date -->
                             <div class="msg_date-wrapper">
-                                <span>11:39</span>
+                                <span>{{ getHours(msg.date) }}</span>
                             </div>
                         </div>
-                        
+
                     </div>                    
                 </div>
 
@@ -125,12 +125,12 @@
                     </div>
 
                     <!-- input -->
-                    <input type="text" class="input_text" placeholder="Scrivi un messaggio">
+                    <input type="text" class="input_text" placeholder="Scrivi un messaggio" v-model="newMessageText" @keyup.enter="sendMessage">
 
                     <!-- icon mic send -->
                     <div class="icon-chat">
-                        <i class="fas fa-microphone "></i>
-                        <i class="fas fa-paper-plane d-none"></i>
+                        <i class="fas fa-microphone" :class="newMessageText.trim() != '' ? 'd-none' : '' "></i>
+                        <i class="fas fa-paper-plane" :class="newMessageText.trim() == '' ? 'd-none' : '' " @click="sendMessage"></i>
                     </div>
                 </div>
             </div>
