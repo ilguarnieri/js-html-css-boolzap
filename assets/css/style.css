@@ -35,13 +35,16 @@ a{
     background: var(--ag-scrollbar);
 }
 
+
 /******************************* sfondo *******************************/
 body{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--ag-bg-body);
 }
+
 
 /******************************* app *******************************/
 .app-wrapper{
@@ -53,11 +56,13 @@ body{
     display: flex;
 }
 
+
 /******************************* side-bar *******************************/
 .side-bar{
     height: 100%;
     background-color: var(--ag-white);
 }
+
 
 /******************************* header-bar *******************************/
 .header-bar{
@@ -69,6 +74,7 @@ body{
     padding: 10px 16px;
     gap: 10px;
 }
+
 
 .avatar{
     height: 49px;
@@ -92,6 +98,7 @@ body{
     margin: 17px;
     cursor: pointer;
 }
+
 
 /******************************* search-bar *******************************/
 .search-bar{
@@ -124,6 +131,7 @@ body{
     left: 30px;
     color: var(--ag-icon);
 }
+
 
 /******************************* contacts *******************************/
 .contacts-side{
@@ -167,7 +175,7 @@ body{
     font-weight: 500;
 }
 
-.msg_data{
+.msg_last_data{
     font-size: 12px;
     align-self: flex-end;
     color: var(--ag-chat); 
@@ -178,10 +186,12 @@ body{
     color: var(--ag-chat);
 }
 
+
 /******************************* chat wrapper *******************************/
 .chat-wrapper{
     flex-grow: 1;    
 }
+
 
 /******************************* welcome  *******************************/
 .welcome-wrapper{
@@ -193,6 +203,7 @@ body{
     flex-direction: column;
     padding: 60px;
     border-left: 1px solid var(--ag-border);
+    background: var(--ag-bg-welcome);
 }
 
 .welcome-intro-img{
@@ -227,6 +238,7 @@ body{
     border-bottom: 1px solid var(--ag-border);
 }
 
+
 /******************************* user-chat *******************************/
 .user-chat{
     width: 100%;
@@ -238,6 +250,7 @@ body{
 .user-chat .header-bar{
     border-left: 1px solid var(--ag-border-dark);
 }
+
 
 /******************************* header chat *******************************/
 .info_chat{
@@ -294,9 +307,9 @@ body{
     border-radius: var(--ag-border-radius);
     padding: 10px;
     font-size: 14px;
-    width: 520px;
+    max-width: 520px;
     position: relative;
-    filter: drop-shadow(0 1px 1px #aaa);
+    filter: drop-shadow(0 1px 1px var(--ag-msg-shadow));
 }
 
 .message.sent{
@@ -356,13 +369,6 @@ body{
 }
 
 
-
-
-
-
-
-
-
 /******************************* footer chat *******************************/
 .header-bar.footer_chat{
     border-color: var(--ag-border);
@@ -405,13 +411,13 @@ body{
     .col-chat{
         width: calc((100% / 12) * (12 - 4.2));
     }
-    .message{
+    .max-message{
         width: calc((100% / 12) * 9);
     }
 }
 
 @media screen and (max-width: 1024px){
-    .message{
+    .max-message{
         width: calc((100% / 12) * 10.5);
     }
 }
@@ -430,7 +436,7 @@ body{
     .messages-wrapper{
         width: calc((100% / 12) * 11);
     }
-    .message{
+    .max-message{
         width: calc((100% / 12) * 11);
     }
 }
@@ -444,18 +450,7 @@ body{
     }
 }
 
+
 .d-none{
     display: none;
-}
-
-
-
-
-
-
-
-.debug{
-    height: 60px;
-    background-color: salmon;
-    border: 3px dotted blue;
 }

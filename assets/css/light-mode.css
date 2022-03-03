@@ -12,20 +12,12 @@
     --ag-href-text: #208F7B;
     --ag-msg-sent: #d9fdd3;
     --ag-msg-received: #fff;
-
+    --ag-msg-shadow: #aaa;
 
     --ag-border-radius: 8px;
 
     --ag-img-welcome: url(../img/intro-light.jpg);    
     --ag-backgroud-chat: url(../img/background-light.jpg);
-}
-
-/**************** body ****************/
-body{
-    background: linear-gradient(#00a884 150px, #e6e3de 150px, #d1d7db calc(100% - 150px));
-}
-
-/**************** welcome ****************/
-.welcome-wrapper{
-    background: linear-gradient(#F8F8F8 calc(100% - 6px), #25d366 calc(100% - 6px));
+    --ag-bg-body: linear-gradient(#00a884 150px, #e6e3de 150px, #d1d7db calc(100% - 150px));
+    --ag-bg-welcome: linear-gradient(#F8F8F8 calc(100% - 6px), #25d366 calc(100% - 6px));
 }
