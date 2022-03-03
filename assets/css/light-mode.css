@@ -5,14 +5,18 @@
     --ag-border: #E9EDEF;
     --ag-border-dark: #D1D7DB;
     --ag-icon: #54656f;
-    --ag--scrollbar: #CED0D1;
-    --ag--chat: #667781;
-    --ag--primary-title: #41525d;
-    --ag--href-text: #208F7B;
+    --ag-scrollbar: #CED0D1;
+    --ag-chat: #667781;
+    --ag-primary-title: #41525d;
+    --ag-href-text: #208F7B;
+    --ag-msg-sent: #d9fdd3;
+    --ag-msg-received: #fff;
 
-    --ag--img-welcome: url(../img/intro-light.jpg);
+
     --ag-border-radius: 8px;
-    --ag--backgroud-chat: url(../img/background-light.jpg);
+
+    --ag-img-welcome: url(../img/intro-light.jpg);    
+    --ag-backgroud-chat: url(../img/background-light.jpg);
 }
 
 /**************** body ****************/
