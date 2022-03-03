@@ -6,10 +6,20 @@
     --bs-icon: #54656f;
     --bs--scrollbar: #CED0D1;
     --bs--chat: #667781;
+    --bs--primary-title: #41525d;
+    --bs--intro-p: #667781;
+    --bs--href-text: #208F7B;
+
+    --bs--img-welcome: url(../img/intro-light.jpg);
     --bs-border-radius: 8px;
 }
 
-/**************** colore sfondo ****************/
+/**************** body ****************/
 body{
     background: linear-gradient(#00a884 150px, #e6e3de 150px, #d1d7db calc(100% - 150px));
+}
+
+/**************** welcome ****************/
+.welcome-wrapper{
+    background: linear-gradient(#F8F8F8 calc(100% - 6px), #25d366 calc(100% - 6px));
 }
