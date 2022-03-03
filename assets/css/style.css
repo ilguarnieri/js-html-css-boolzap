@@ -67,6 +67,7 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 10px 16px;
+    gap: 10px;
 }
 
 .avatar{
@@ -103,18 +104,22 @@ body{
     position: relative;    
 }
 
-.search-bar #contact-search{
-    width: 100%;
-    line-height: 35px;
+.input_text{
     border: none;
     border-radius: var(--ag-border-radius);
-    background-color: var(--ag-header);
-    padding-left: 65px;
     font-size: 15px;
+}
+
+.search-bar .input_text{
+    background-color: var(--ag-header);
+    padding-left: 65px;   
+    width: 100%;
+    line-height: 35px;
 }
 
 .icon-search{
     position: absolute;
+    cursor: pointer;
     font-size: 14px;
     left: 30px;
     color: var(--ag-icon);
@@ -237,7 +242,14 @@ body{
 
 .icon-chat > *{
     margin: 14px;
+    color: var(--ag-icon);
     cursor: pointer;
+}
+
+.info_user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .info_user .name{
@@ -252,15 +264,35 @@ body{
 
 
 /******************************* chat messages *******************************/
-.chat__messages{
+.chat_messages{
    flex-grow: 1;
    background-image: var(--ag--backgroud-chat);
    background-repeat: no-repeat;
    background-size: cover;
+   background-position: center;
+   border-top: 1px solid var(--ag-border);
+   border-left: 1px solid var(--ag-border);
 }
 
 
+/******************************* footer chat *******************************/
+.header-bar.footer_chat{
+    border-color: var(--ag-border);
+}
 
+.footer_chat .icon-chat > *{
+    margin: 8px;
+}
+
+.footer_chat .icon-chat .fa-microphone{
+    padding-left: 3.8px;
+}
+
+.footer_chat .input_text{
+    flex-grow: 1;
+    padding-left: 18px;
+    line-height: 40px;
+}
 
 
 
