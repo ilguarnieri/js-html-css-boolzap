@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 19px;
+    font-size: 14px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -22,7 +22,6 @@ a{
     text-decoration: none;
     color: var(--ag-href-text);
     font-weight: 500;
-    font-size: 14px;
 }
 
 /* SCROLL-BAR STYLE */
@@ -95,6 +94,7 @@ body{
 }
 
 .header_option > *{
+    font-size: 19px;
     margin: 17px;
     cursor: pointer;
 }
@@ -127,13 +127,12 @@ body{
 .icon-search{
     position: absolute;
     cursor: pointer;
-    font-size: 14px;
     left: 30px;
     color: var(--ag-icon);
 }
 
 
-/******************************* contacts *******************************/
+/******************************* side contacts *******************************/
 .contacts-side{
     height: calc(100% - 60px - 50px);
     overflow-x: auto;
@@ -181,9 +180,21 @@ body{
     color: var(--ag-chat); 
 }
 
+.msg_preview{
+    display: flex;
+    gap: 4px;
+}
+
 .msg_preview p{
-    font-size: 14px;
     color: var(--ag-chat);
+}
+
+.active-side{
+    background-color: var(--ag-header);
+}
+
+.check-sent{
+    color: var(--ag-check-received);
 }
 
 
@@ -228,7 +239,6 @@ body{
 }
 
 .text-connection p, .fa-laptop{
-    font-size: 14px;
     color: var(--ag-chat);
 }
 
@@ -259,6 +269,7 @@ body{
 }
 
 .icon-chat > *{
+    font-size: 19px;
     margin: 14px;
     color: var(--ag-icon);
     cursor: pointer;
@@ -306,7 +317,6 @@ body{
 .message{
     border-radius: var(--ag-border-radius);
     padding: 10px;
-    font-size: 14px;
     max-width: 520px;
     position: relative;
     filter: drop-shadow(0 1px 1px var(--ag-msg-shadow));
@@ -368,6 +378,33 @@ body{
     border-top-left-radius: 0;
 }
 
+.msg_text > *{
+    overflow-wrap: break-word;
+}
+
+.space_date{
+    width: 60px;
+    display: inline-block;
+}
+
+.msg_date-wrapper{
+    float: right;
+    margin: -10px 0 -5px 4px;
+    position: relative;
+    font-size: 12px;    
+}
+
+.msg_date-wrapper > *{
+    font-size: 12px;
+    color: var(--ag-chat);
+}
+
+.msg_date-wrapper::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
 
 /******************************* footer chat *******************************/
 .header-bar.footer_chat{
@@ -387,13 +424,6 @@ body{
     padding-left: 18px;
     line-height: 40px;
 }
-
-
-
-
-
-
-
 
 
 /******************************* media queery *******************************/

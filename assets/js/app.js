@@ -1,6 +1,7 @@
 const app = new Vue({
     el: '#app',
     data: {
+        activeContact: null,
         contacts: [
             {
                 name: 'Mamma',
@@ -26,9 +27,9 @@ const app = new Vue({
                 ],
             },
             {
-                name: 'Luciano',
-                last_name: 'Rosati',
-                avatar: 'assets/img/av_2.jpeg',
+                name: 'Enzo',
+                last_name: 'Millarte',
+                avatar: 'assets/img/av_3.jpeg',
                 visible: true,
                 messages: [
                     {
@@ -49,9 +50,9 @@ const app = new Vue({
                 ],
             },
             {
-                name: 'Enzo',
-                last_name: 'Millarte',
-                avatar: 'assets/img/av_3.jpeg',
+                name: 'Luciano',
+                last_name: 'Rosati',
+                avatar: 'assets/img/av_2.jpeg',
                 visible: true,
                 messages: [
                     {
@@ -92,6 +93,18 @@ const app = new Vue({
         ]
     },
     methods: {
-        
+        selectContact: function (contact){
+            this.activeContact = contact;
+        },
+
+        lastMsgReceived: function(index){
+            const msg = this.contacts[index].messages;
+            const indexLast = msg.length - 1;
+
+            return msg[indexLast];
+        }
+
+
+
     }
 })
