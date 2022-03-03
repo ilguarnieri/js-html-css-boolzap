@@ -1,17 +1,18 @@
 /**************** color ****************/
 :root {
-    --bs-header: #F0F2F5;
-    --bs-white: #FFFFFF;
-    --bs-border: #E9EDEF;
-    --bs-icon: #54656f;
-    --bs--scrollbar: #CED0D1;
-    --bs--chat: #667781;
-    --bs--primary-title: #41525d;
-    --bs--intro-p: #667781;
-    --bs--href-text: #208F7B;
+    --ag-header: #F0F2F5;
+    --ag-white: #FFFFFF;
+    --ag-border: #E9EDEF;
+    --ag-border-dark: #D1D7DB;
+    --ag-icon: #54656f;
+    --ag--scrollbar: #CED0D1;
+    --ag--chat: #667781;
+    --ag--primary-title: #41525d;
+    --ag--href-text: #208F7B;
 
-    --bs--img-welcome: url(../img/intro-light.jpg);
-    --bs-border-radius: 8px;
+    --ag--img-welcome: url(../img/intro-light.jpg);
+    --ag-border-radius: 8px;
+    --ag--backgroud-chat: url(../img/background-light.jpg);
 }
 
 /**************** body ****************/
