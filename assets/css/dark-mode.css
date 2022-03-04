@@ -1,0 +1,25 @@
+/**************** color ****************/
+:root {
+    --ag-header: #2a3942;
+    --ag-hover-contact: #202c33;
+    --ag-white: #111b21;
+    --ag-border: #303d45;
+    --ag-border-dark: #303d45;
+    --ag-icon: #aebac1;
+    --ag-scrollbar: #374045;
+    --ag-chat: #8696a0;
+    --ag-primary-title: #d1d5d8;
+    --ag-href-text: #00a884;
+    --ag-msg-sent: #005c4b;
+    --ag-msg-received: #202c33;
+    --ag-msg-shadow: #202c33;    
+    --ag-check-received: #53bdeb;
+    --ag-text-name: #e9edef;
+
+    --ag-border-radius: 8px;
+
+    --ag-img-welcome: url(../img/intro-dark.jpg);    
+    --ag-backgroud-chat: url(../img/background-dark.jpg);
+    --ag-bg-body: #0a1014;
+    --ag-bg-welcome: #222e35;
+}

@@ -60,6 +60,7 @@ body{
 .side-bar{
     height: 100%;
     background-color: var(--ag-white);
+    user-select: none;
 }
 
 
@@ -108,13 +109,14 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;    
+    position: relative;
 }
 
 .input_text{
     border: none;
     border-radius: var(--ag-border-radius);
     font-size: 15px;
+    color: var(--ag-text-name)
 }
 
 .search-bar .input_text{
@@ -135,8 +137,7 @@ body{
 /******************************* side contacts *******************************/
 .contacts-side{
     height: calc(100% - 60px - 50px);
-    overflow-x: auto;
-    
+    overflow-y: auto;    
 }
 
 .contact{
@@ -172,6 +173,7 @@ body{
 .contact_name{
     font-size: 17px;
     font-weight: 500;
+    color: var(--ag-text-name);
 }
 
 .msg_last_data{
@@ -182,6 +184,7 @@ body{
 
 .msg_preview{
     display: flex;
+    align-items: center;
     gap: 4px;
 }
 
@@ -191,10 +194,6 @@ body{
 
 .active-side{
     background-color: var(--ag-header);
-}
-
-.check-sent{
-    color: var(--ag-check-received);
 }
 
 
@@ -215,6 +214,7 @@ body{
     padding: 60px;
     border-left: 1px solid var(--ag-border);
     background: var(--ag-bg-welcome);
+    user-select: none;
 }
 
 .welcome-intro-img{
@@ -259,6 +259,7 @@ body{
 
 .user-chat .header-bar{
     border-left: 1px solid var(--ag-border-dark);
+    user-select: none;
 }
 
 
@@ -285,11 +286,12 @@ body{
 .info_user .name{
     font-size: 15px;
     font-weight: 500;
+    color: var(--ag-text-name);
 }
 
 .info_user .info-access{
     font-size: 13px;
-    color: var(--ag--chat);
+    color: var(--ag-chat);
 }
 
 
@@ -305,6 +307,7 @@ body{
    display: flex;
    justify-content: center;
    padding: 20px 0;
+   overflow-y: scroll;
 }
 
 .messages-wrapper{
@@ -379,6 +382,7 @@ body{
 }
 
 .msg_text > *{
+    color: var(--ag-text-name);
     overflow-wrap: break-word;
 }
 
@@ -405,10 +409,15 @@ body{
     clear: both;
 }
 
+.check-view{
+    color: var(--ag-check-received);
+}
+
 
 /******************************* footer chat *******************************/
 .header-bar.footer_chat{
     border-color: var(--ag-border);
+    background-color: var(--ag-hover-contact);
 }
 
 .footer_chat .icon-chat > *{
@@ -420,9 +429,14 @@ body{
 }
 
 .footer_chat .input_text{
+    background-color: var(--ag-header);
     flex-grow: 1;
     padding-left: 18px;
     line-height: 40px;
+}
+
+.d-none{
+    display: none;
 }
 
 
@@ -478,9 +492,4 @@ body{
     .col-chat{
         min-width: 450px;
     }
-}
-
-
-.d-none{
-    display: none;
 }

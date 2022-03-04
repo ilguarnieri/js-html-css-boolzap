@@ -5,10 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/light-mode.css">
+    <link rel="stylesheet" href="assets/css/light-mode.css" id="color_mode">
     <link rel="icon" href="assets/img/icon.svg">
     <title>BoolzApp Web</title>
 </head>
@@ -23,7 +22,8 @@
                     <img src="/assets/img/user.jpeg" alt="user">
                 </figure>
                 <div class="header_option">
-                    <i class="fas fa-moon"></i>
+                    <i v-if="darkMode" class="fas fa-sun" @click="colorMode"></i>
+                    <i v-else class="fas fa-moon" @click="colorMode"></i>                    
                     <i class="fas fa-comment-alt"></i>
                     <i class="fas fa-ellipsis-v"></i>
                 </div>
@@ -56,7 +56,10 @@
                         
                         <!-- last msg -->
                         <div class="msg_preview">
-                            <i class="fas fa-check-double" :class="lastMsgReceived(index).status == 'sent' ? 'check-sent' : 'd-none' "></i>
+
+                            <i class="fas fa-check" :class="lastMsgReceived(index).check == 1 ? '' : 'd-none' " ></i>
+                            <i class="fas fa-check-double" :class="lastMsgReceived(index).check == 2 ? 'check-view' : 'd-none' "></i>
+
                             <p>{{ lastMsgReceived(index).text }}</p>
                         </div>
                     </div>
@@ -110,6 +113,8 @@
                             <!-- date -->
                             <div class="msg_date-wrapper">
                                 <span>{{ getHours(msg.date) }}</span>
+                                <i class="fas fa-check" :class="msg.check == 1 ? '' : 'd-none' " ></i>
+                            <i class="fas fa-check-double" :class="msg.check == 2 ? 'check-view' : 'd-none' "></i>
                             </div>
                         </div>
 
@@ -125,12 +130,12 @@
                     </div>
 
                     <!-- input -->
-                    <input type="text" class="input_text" placeholder="Scrivi un messaggio" v-model="newMessageText" @keyup.enter="sendMessage">
+                    <input type="text" class="input_text" placeholder="Scrivi un messaggio" v-model="messageText" @keyup.enter="sentMessage">
 
                     <!-- icon mic send -->
                     <div class="icon-chat">
-                        <i class="fas fa-microphone" :class="newMessageText.trim() != '' ? 'd-none' : '' "></i>
-                        <i class="fas fa-paper-plane" :class="newMessageText.trim() == '' ? 'd-none' : '' " @click="sendMessage"></i>
+                        <i class="fas fa-microphone" :class="messageText.trim() != '' ? 'd-none' : '' "></i>
+                        <i class="fas fa-paper-plane" :class="messageText.trim() == '' ? 'd-none' : '' " @click="sentMessage"></i>
                     </div>
                 </div>
             </div>
