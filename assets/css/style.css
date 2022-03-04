@@ -135,6 +135,10 @@ body{
     color: var(--ag-icon);
 }
 
+.fa-arrow-left.icon-search{
+    color: var(--ag-href-text);
+}
+
 
 /******************************* side contacts *******************************/
 .contacts-side{

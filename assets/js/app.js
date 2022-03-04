@@ -2,8 +2,10 @@ const app = new Vue({
     el: '#app',
     data: {
         darkMode: false,
+        arrowSearch: false,
         activeIndex: null,
         messageText: '',
+        inputSearch: '',
         contacts: [
             {
                 name: 'Mamma',
@@ -27,39 +29,6 @@ const app = new Vue({
                     {
                         date: '10/01/2020 11:02:22',
                         text: 'Tutto fatto!',
-                        status: 'sent',
-                        check: 3
-                    }
-                ],
-            },
-            {
-                name: 'Luciano',
-                last_name: 'Rosati',
-                avatar: 'assets/img/av_2.jpeg',
-                visible: true,
-                access: 'ultimo accesso ieri alle 21:10',
-                messages: [
-                    {
-                        date: '28/03/2020 08:10:40',
-                        text: 'La Marianna va in campagna',
-                        status: 'received',
-                        check: 0
-                    },
-                    {
-                        date: '28/03/2020 08:20:10',
-                        text: 'Sicuro di non aver sbagliato chat?',
-                        status: 'sent',
-                        check: 3
-                    },
-                    {
-                        date: '28/03/2020 08:45:22',
-                        text: 'Ah scusa!',
-                        status: 'received',
-                        check: 0
-                    },
-                    {
-                        date: '28/03/2020 08:58:22',
-                        text: 'Ahahahaha',
                         status: 'sent',
                         check: 3
                     }
@@ -95,6 +64,39 @@ const app = new Vue({
                         text: 'Dai ci vediamo nel weekend!',
                         status: 'received',
                         check: 0
+                    }
+                ],
+            },
+            {
+                name: 'Luciano',
+                last_name: 'Rosati',
+                avatar: 'assets/img/av_2.jpeg',
+                visible: true,
+                access: 'ultimo accesso ieri alle 21:10',
+                messages: [
+                    {
+                        date: '28/03/2020 08:10:40',
+                        text: 'La Marianna va in campagna',
+                        status: 'received',
+                        check: 0
+                    },
+                    {
+                        date: '28/03/2020 08:20:10',
+                        text: 'Sicuro di non aver sbagliato chat?',
+                        status: 'sent',
+                        check: 3
+                    },
+                    {
+                        date: '28/03/2020 08:45:22',
+                        text: 'Ah scusa!',
+                        status: 'received',
+                        check: 0
+                    },
+                    {
+                        date: '28/03/2020 08:58:22',
+                        text: 'Ahahahaha',
+                        status: 'sent',
+                        check: 3
                     }
                 ],
             },
@@ -229,23 +231,6 @@ const app = new Vue({
             setTimeout(() => {
                 contact.access = `ultimo accesso oggi alle ${this.getHours(newAnswer.date)}`;
             }, 3000);
-
-            
-
-
-
-
-
-
-
-
-
-
-         
-
-
-
-
         },
 
 

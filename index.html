@@ -33,8 +33,9 @@
 
             <!-- search bar -->
             <div class="search-bar">
-                <input type="search" id="contact-search" class="input_text" placeholder="Cerca o inizia una nuova chat">
-                <i class="fas fa-search icon-search"></i>
+                <input type="text" id="contact-search" class="input_text" v-model="inputSearch" @click="arrowSearch = true" placeholder="Cerca o inizia una nuova chat">
+                <i class="fas fa-arrow-left" :class="arrowSearch ? 'icon-search' : 'd-none' "></i>
+                <i class="fas fa-search" :class="arrowSearch ? 'd-none' : 'icon-search' "></i>
             </div>
 
             <!-- contacts -->
