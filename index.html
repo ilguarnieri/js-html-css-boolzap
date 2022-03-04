@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/light-mode.css" id="color_mode">
@@ -39,7 +41,7 @@
             <ul class="contacts-side">
 
                 <!-- single contact -->
-                <li v-for="(element, index) in contacts" class="contact" @click="selectContact(element)" :class="activeContact == element ? 'active-side' : '' ">
+                <li v-for="(element, index) in contacts" class="contact" @click="selectContact(index)" :class="activeIndex == index ? 'active-side' : '' ">
                     <!-- img -->
                     <div class="avatar_wrapper">
                         <figure class="avatar">
@@ -51,16 +53,15 @@
                         <!-- name -->
                         <div class="contact_name_date">
                             <h4 class="contact_name">{{element.name}} {{element.last_name}}</h4>
-                            <p class="msg_last_data">{{ getHours(lastMsgReceived(index).date) }}</p>
+                            <p class="msg_last_data">{{ getHours(lastMsg(index).date) }}</p>
                         </div>
                         
                         <!-- last msg -->
                         <div class="msg_preview">
-
-                            <i class="fas fa-check" :class="lastMsgReceived(index).check == 1 ? '' : 'd-none' " ></i>
-                            <i class="fas fa-check-double" :class="lastMsgReceived(index).check == 2 ? 'check-view' : 'd-none' "></i>
-
-                            <p>{{ lastMsgReceived(index).text }}</p>
+                            <i class="fas fa-check" :class="lastMsg(index).check == 1 ? '' : 'd-none' " ></i>
+                            <i class="fas fa-check-double" :class="lastMsg(index).check == 2 ? '' : 'd-none' "></i>
+                            <i class="fas fa-check-double" :class="lastMsg(index).check == 3 ? 'check-view' : 'd-none' "></i>
+                            <p>{{ lastMsg(index).text }}</p>
                         </div>
                     </div>
                 </li>
@@ -72,7 +73,7 @@
         <div class="chat-wrapper col-chat">
 
             <!-- user-chat -->
-            <div v-if="activeContact" class="user-chat">
+            <div v-if="activeIndex != null" class="user-chat">
 
                 <!-- header chat -->
                 <div class="header-bar">
@@ -80,13 +81,13 @@
                     <div class="info_chat">                        
                         <!-- img user -->
                         <figure class="avatar avatar-header">
-                            <img :src="activeContact.avatar" :alt="activeContact.name">
+                            <img :src="contacts[activeIndex].avatar" :alt="contacts[activeIndex].name">
                         </figure>
                         
                         <!-- info user -->
                         <div class="info_user">
-                            <h4 class="name">{{activeContact.name}} {{activeContact.last_name}}</h4>
-                            <p class="info-access">ultimo accesso oggi alle 10:59</p>
+                            <h4 class="name">{{contacts[activeIndex].name}} {{contacts[activeIndex].last_name}}</h4>
+                            <p class="info-access">{{ contacts[activeIndex].access }}</p>
                         </div>
                     </div>
                         
@@ -102,7 +103,8 @@
                     <div  class="messages-wrapper">
 
                         <!-- msg sent -->                     
-                        <div  v-for="msg in activeContact.messages" :class="msg.status" class="message">
+                        <div  v-for="msg in contacts[activeIndex].messages" :class="msg.status" class="message">
+
                             <!-- text -->
                             <div class="msg_text">
                                 <span>
@@ -114,7 +116,8 @@
                             <div class="msg_date-wrapper">
                                 <span>{{ getHours(msg.date) }}</span>
                                 <i class="fas fa-check" :class="msg.check == 1 ? '' : 'd-none' " ></i>
-                            <i class="fas fa-check-double" :class="msg.check == 2 ? 'check-view' : 'd-none' "></i>
+                                <i class="fas fa-check-double" :class="msg.check == 2 ? '' : 'd-none' "></i>
+                                <i class="fas fa-check-double" :class="msg.check == 3 ? 'check-view' : 'd-none' "></i>
                             </div>
                         </div>
 

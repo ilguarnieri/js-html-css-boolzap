@@ -2,8 +2,7 @@ const app = new Vue({
     el: '#app',
     data: {
         darkMode: false,
-        activeContact: null,
-        inputActive: false,
+        activeIndex: null,
         messageText: '',
         contacts: [
             {
@@ -11,24 +10,25 @@ const app = new Vue({
                 last_name: '',
                 avatar: 'assets/img/av_1.jpeg',
                 visible: true,
+                access: 'ultimo accesso ieri alle 18:05',
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        date: '10/01/2020 10:30:55',
                         text: 'Hai portato a spasso il cane?',
-                        status: 'sent',
-                        check: 2
-                    },
-                    {
-                        date: '10/01/2020 15:50:00',
-                        text: 'Ricordati di dargli da mangiare',
-                        status: 'sent',
-                        check: 2
-                    },
-                    {
-                        date: '10/01/2020 16:15:22',
-                        text: 'Tutto fatto!',
                         status: 'received',
                         check: 0
+                    },
+                    {
+                        date: '10/01/2020 10:31:00',
+                        text: 'Ricordati di dargli da mangiare',
+                        status: 'received',
+                        check: 0
+                    },
+                    {
+                        date: '10/01/2020 11:02:22',
+                        text: 'Tutto fatto!',
+                        status: 'sent',
+                        check: 3
                     }
                 ],
             },
@@ -37,24 +37,31 @@ const app = new Vue({
                 last_name: 'Rosati',
                 avatar: 'assets/img/av_2.jpeg',
                 visible: true,
+                access: 'ultimo accesso ieri alle 21:10',
                 messages: [
                     {
-                        date: '28/03/2020 10:10:40',
+                        date: '28/03/2020 08:10:40',
                         text: 'La Marianna va in campagna',
                         status: 'received',
                         check: 0
                     },
                     {
-                        date: '28/03/2020 10:20:10',
+                        date: '28/03/2020 08:20:10',
                         text: 'Sicuro di non aver sbagliato chat?',
                         status: 'sent',
-                        check: 2
+                        check: 3
                     },
                     {
-                        date: '28/03/2020 16:15:22',
+                        date: '28/03/2020 08:45:22',
                         text: 'Ah scusa!',
                         status: 'received',
                         check: 0
+                    },
+                    {
+                        date: '28/03/2020 08:58:22',
+                        text: 'Ahahahaha',
+                        status: 'sent',
+                        check: 3
                     }
                 ],
             },
@@ -63,24 +70,31 @@ const app = new Vue({
                 last_name: 'Millarte',
                 avatar: 'assets/img/av_3.jpeg',
                 visible: true,
+                access: 'ultimo accesso ieri alle 22:51',
                 messages: [
                     {
-                        date: '20/03/2020 16:30:00',
-                        text: 'Ciao come stai?',
-                        status: 'sent',
-                        check: 2
-                    },
-                    {
-                        date: '20/03/2020 16:30:55',
-                        text: 'Bene grazie! Stasera ci vediamo?',
+                        date: '20/03/2020 11:30:00',
+                        text: 'Ciao Angelo, come stai?',
                         status: 'received',
                         check: 0
                     },
                     {
-                        date: '20/03/2020 16:35:00',
-                        text: 'Mi piacerebbe ma devo andare a fare la spesa.',
+                        date: '20/03/2020 11:30:55',
+                        text: 'Bene grazie! Stasera ci vediamo?',
                         status: 'sent',
-                        check: 2
+                        check: 3
+                    },
+                    {
+                        date: '20/03/2020 11:35:00',
+                        text: 'Mi piacerebbe ma devo andare a fare la spesa.',
+                        status: 'received',
+                        check: 0
+                    },
+                    {
+                        date: '20/03/2020 11:38:00',
+                        text: 'Dai ci vediamo nel weekend!',
+                        status: 'received',
+                        check: 0
                     }
                 ],
             },
@@ -89,12 +103,13 @@ const app = new Vue({
                 last_name: 'Palmisano',
                 avatar: 'assets/img/av_4.jpeg',
                 visible: true,
+                access: 'ultimo accesso ieri alle 20:42',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
                         text: 'Lo sai che ha aperto una nuova pizzeria?',
                         status: 'sent',
-                        check: 2
+                        check: 3
                     },
                     {
                         date: '10/01/2020 15:50:00',
@@ -106,7 +121,22 @@ const app = new Vue({
             },
         ],
         answer:[
-            'Ok'
+            'Ciao',
+            'Ciao, come stai?',
+            'Vuoi fare la baldoria stasera?',
+            'Andiamo al sushi?',
+            'Madici a me?!',
+            'Sai cosa fanno due api sulla luna? La Luna di miele!',
+            'Cosa dice la chiappa destra alla chiappa sinistra? Che puzza in corridoio',
+            'Alcuni portano la felicità ovunque vadano. Altri quando se ne vanno.',
+            'Ricordati i LIMONIIIIIIIIII!',
+            'Cosa facciamo a ferragosto?',
+            'Prenotiamo un viaggio?',
+            'Cosa facciamo questo weekend?',
+            'Lavori domani?',
+            'Ho bisogno del tuo aiuto',
+            'Preparati vengo a prenderti!',
+            `Tra mezz'ora sono da te!`
         ]
     },
     methods: {
@@ -120,20 +150,22 @@ const app = new Vue({
                 cssLink.setAttribute("href", 'assets/css/light-mode.css');
             }            
         },
-        
+
 
         //active contact
-        selectContact: function (contact){
-            this.activeContact = contact;
+        selectContact: function (index){
+            this.activeIndex = index;
         },
+        
 
         //last msg view in sidebar
-        lastMsgReceived: function(index){
+        lastMsg: function(index){
             const msg = this.contacts[index].messages;
             const indexLast = msg.length - 1;
 
             return msg[indexLast];
         },
+
 
         //time for msg
         getHours: function(date){
@@ -141,53 +173,92 @@ const app = new Vue({
             return ora.substring(0,5);
         },
 
+
+        getRandom: function(min, max){
+            return Math.round(Math.random() * (max - min - 1) + min);
+        },
+
+
         //sent msg
         sentMessage: function(){
 
-            const currentIndex = this.activeContact.messages.length;
-            const msg = this.activeContact.messages;
+            const index = this.activeIndex;
+            const msg = this.contacts[index].messages;
+            const msgIndex = msg.length;       
 
             if(this.messageText.trim() != ''){
                 
-                const newMessage = this.createMsg(this.messageText, 'sent');                
-                this.activeContact.messages.push(newMessage);
+                const newMessage = this.createMsg(this.messageText, 'sent', 1);
+                msg.push(newMessage);
+
                 this.messageText = '';
                 
                 setTimeout(() => {
-                    msg[currentIndex].check = 2;                    
+                    msg[msgIndex].check = 2;                    
                 }, 1000);
+
+                setTimeout(() => {
+                    this.reply(index, msg, msgIndex);
+                }, 2000);              
             }
         },
         
 
         //reply
-        reply: function(){
-            console.log('risp')
+        reply: function(index, msg, msgIndex){
+
+            const contact = this.contacts[index];
+
+            contact.access = 'online';
+            const answerIndex = this.getRandom(0, this.answer.length);
+            const newAnswer = this.createMsg(this.answer[answerIndex], 'received', 0);
+
+            setTimeout(() => {
+                msg[msgIndex].check = 3;
+            }, 500);
+
+            setTimeout(() => {
+                contact.access = 'sta scrivendo...';
+            }, 1000);
+
+            setTimeout(() => {
+                contact.access = 'online';
+                msg.push(newAnswer);
+            }, 2000);
+
+            setTimeout(() => {
+                contact.access = `ultimo accesso oggi alle ${this.getHours(newAnswer.date)}`;
+            }, 3000);
+
+            
+
+
+
+
+
+
+
+
+
+
+         
+
+
+
 
         },
 
+
         //create msg object
-        createMsg: function(text, status){
-            const d = new Date();
-            let ora;
-
-            //add zero for hours < 10
-            if(d.getHours() < 10){
-                ora = `0${d.getHours()}`;
-            }
-
+        createMsg: function(text, status, check){
             //msg complete
             const messageComplete = {
-                date: `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()} ${ora}:${d.getMinutes()}:${d.getMilliseconds()}`,
+                date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                 text,
                 status,
-                check: 1
-            }
-            
+                check
+            }            
             return messageComplete;
         }
-        
     }
 })
-
-

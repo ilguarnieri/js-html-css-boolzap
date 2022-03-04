@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-size: 14px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: width 350ms ease-in-out;
 }
 
 img{
@@ -42,6 +43,7 @@ body{
     justify-content: center;
     align-items: center;
     background: var(--ag-bg-body);
+    transition: background 350ms ease-in-out;
 }
 
 
@@ -188,7 +190,7 @@ body{
     gap: 4px;
 }
 
-.msg_preview p{
+.msg_preview > *{
     color: var(--ag-chat);
 }
 
@@ -425,7 +427,7 @@ body{
 }
 
 .footer_chat .icon-chat .fa-microphone{
-    padding-left: 3.8px;
+    padding-left: 5px;
 }
 
 .footer_chat .input_text{
