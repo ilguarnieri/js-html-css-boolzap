@@ -17,19 +17,22 @@ const app = new Vue({
                         date: '18/01/2022 10:30:55',
                         text: 'Hai portato a spasso il cane?',
                         status: 'received',
-                        check: 0
+                        check: 0,
+                        optionMsg: false
                     },
                     {
                         date: '18/01/2022 10:31:00',
                         text: 'Ricordati di dargli da mangiare',
                         status: 'received',
-                        check: 0
+                        check: 0,
+                        optionMsg: false
                     },
                     {
                         date: '18/01/2022 11:02:22',
                         text: 'Tutto fatto! 👍🏽',
                         status: 'sent',
-                        check: 3
+                        check: 3,
+                        optionMsg: false
                     }
                 ],
             },
@@ -43,25 +46,29 @@ const app = new Vue({
                         date: '20/02/2022 11:30:00',
                         text: 'Ciao Angelo, come stai?',
                         status: 'received',
-                        check: 0
+                        check: 0,
+                        optionMsg: false
                     },
                     {
                         date: '20/02/2022 11:30:55',
                         text: 'Bene grazie! Stasera ci vediamo? 🙃',
                         status: 'sent',
-                        check: 3
+                        check: 3,
+                        optionMsg: false
                     },
                     {
                         date: '20/02/2022 11:35:00',
                         text: 'Mi piacerebbe ma devo andare a fare la spesa 😔',
                         status: 'received',
-                        check: 0
+                        check: 0,
+                        optionMsg: false
                     },
                     {
                         date: '20/02/2022 11:38:05',
                         text: 'Dai ci vediamo nel weekend!',
                         status: 'received',
-                        check: 0
+                        check: 0,
+                        optionMsg: false
                     }
                 ],
             },
@@ -75,25 +82,29 @@ const app = new Vue({
                         date: '01/03/2022 08:10:40',
                         text: 'La Marianna va in campagna',
                         status: 'received',
-                        check: 0
+                        check: 0,
+                        optionMsg: false
                     },
                     {
                         date: '01/03/2022 08:20:10',
                         text: 'Sicuro di non aver sbagliato chat?',
                         status: 'sent',
-                        check: 3
+                        check: 3,
+                        optionMsg: false
                     },
                     {
                         date: '01/03/2022 08:45:22',
                         text: 'Ah scusa!',
                         status: 'received',
-                        check: 0
+                        check: 0,
+                        optionMsg: false
                     },
                     {
                         date: '01/03/2022 08:58:22',
                         text: '😂😂😂',
                         status: 'sent',
-                        check: 3
+                        check: 3,
+                        optionMsg: false
                     }
                 ],
             },
@@ -107,13 +118,15 @@ const app = new Vue({
                         date: '10/01/2020 15:30:55',
                         text: 'Lo sai che ha aperto una nuova pizzeria? 🍕 ',
                         status: 'sent',
-                        check: 3
+                        check: 3,
+                        optionMsg: false
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         text: 'Si, ma andiamo al cinema 💃🏼',
                         status: 'received',
-                        check: 0
+                        check: 0,
+                        optionMsg: false
                     }
                 ],
             },
@@ -127,26 +140,30 @@ const app = new Vue({
                         date: '15/02/2022 18:50:10',
                         text: 'Quando torni a casa?',
                         status: 'received',
-                        check: 0                        
+                        check: 0,
+                        optionMsg: false
                     },
                     {
                         date: '15/02/2022 18:51:25',
                         text: 'Tra un oretta',
                         status: 'sent',
-                        check: 3                      
+                        check: 3,
+                        optionMsg: false
                     },
                     {
                         date: '15/02/2022 18:52:04',
                         text: 'Chiamami appena puoi',
                         status: 'received',
-                        check: 0                        
+                        check: 0,
+                        optionMsg: false
                     },
                     {
                         date: '15/02/2022 18:55:45',
                         text: '👍🏽👍🏽👍🏽',
                         status: 'sent',
-                        check: 3                      
-                    },                
+                        check: 3,
+                        optionMsg: false
+                    },   
                 ]
             }
         ],
@@ -171,6 +188,8 @@ const app = new Vue({
             '👍🏽'
         ]
     },
+
+
     methods: {
         //choose mode
         colorMode: function(){
@@ -193,14 +212,20 @@ const app = new Vue({
         //last msg view in sidebar
         lastMsg: function(index){
             const msg = this.contacts[index].messages;
-            const indexLast = msg.length - 1;
 
+            if(msg.length === 0 ){
+                return '';
+            }
+            const indexLast = msg.length - 1;
             return msg[indexLast];
         },
 
 
         //time for msg
         getHours: function(date){
+            if(date === undefined){
+                return '';
+            }
             const ora = date.split(' ')[1];
             return ora.substring(0,5);
         },
@@ -293,11 +318,17 @@ const app = new Vue({
         },
 
 
+        //delete msg
+        deleteMessage: function (index){
+            this.contacts[this.activeIndex].messages.splice(index, 1);
+        },
 
 
 
 
-        
+
+
+
 
 
         //ordinamento chat

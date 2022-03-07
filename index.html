@@ -103,8 +103,8 @@
                 <div class="chat_messages">
                     <div  class="messages-wrapper">
 
-                        <!-- msg sent -->                     
-                        <div  v-for="msg in contacts[activeIndex].messages" :class="msg.status" class="message">
+                        <!-- msg -->                     
+                        <div  v-for="(msg, indexMsg) in contacts[activeIndex].messages" :class="msg.status" class="message">
 
                             <!-- text -->
                             <div class="msg_text">
@@ -119,6 +119,18 @@
                                 <i class="fas fa-check" :class="msg.check == 1 ? '' : 'd-none' " ></i>
                                 <i class="fas fa-check-double" :class="msg.check == 2 ? '' : 'd-none' "></i>
                                 <i class="fas fa-check-double" :class="msg.check == 3 ? 'check-view' : 'd-none' "></i>
+                            </div>
+
+                            <!-- option msg -->
+                            <div class="msg_arrow" @mouseleave="msg.optionMsg = false">
+                                <div class="msg_option">
+                                    <i class="fas fa-angle-down icon_arrow" @click="msg.optionMsg = !msg.optionMsg"></i>
+                                    <div class="option-wrapper" v-if="msg.optionMsg">
+                                        <p>Rispondi</p>
+                                        <p>Inoltra messaggio</p>
+                                        <p @click="deleteMessage(indexMsg)">Elimina messaggio</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

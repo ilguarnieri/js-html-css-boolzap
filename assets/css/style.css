@@ -329,7 +329,56 @@ body{
     max-width: 520px;
     position: relative;
     filter: drop-shadow(0 1px 1px var(--ag-msg-shadow));
+    position: relative;
 }
+
+.msg_arrow{    
+    font-weight: bold;
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    text-align: end;
+    width: 95%;
+    height: 95%;
+    color: transparent;
+}
+
+.msg_option{
+    position: relative;
+}
+
+.icon_arrow {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.msg_arrow:hover{
+    color: var(--ag-chat);
+}
+
+.option-wrapper{
+    position: absolute;
+    right: 0;
+    background-color: var(--ag-white);
+    color: var(--ag-chat);
+    font-weight: 500;
+    text-align: start;
+    line-height: 30px;
+    box-shadow: 0 1px 1px var(--ag-msg-shadow);
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 150px;
+    user-select: none;
+}
+
+.option-wrapper p{
+   padding: 5px 15px;
+   cursor: pointer;
+}
+
+.option-wrapper p:hover{
+    background-color: var(--ag-hover-contact);
+ } 
 
 .message.sent{
     background-color: var(--ag-msg-sent);
