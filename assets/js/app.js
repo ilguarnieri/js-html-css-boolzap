@@ -28,7 +28,7 @@ const app = new Vue({
                     },
                     {
                         date: '10/01/2020 11:02:22',
-                        text: 'Tutto fatto!',
+                        text: 'Tutto fatto! 👍🏽',
                         status: 'sent',
                         check: 3
                     }
@@ -37,7 +37,7 @@ const app = new Vue({
             {
                 name: 'Enzo',
                 last_name: 'Millarte',
-                avatar: 'assets/img/av_3.jpeg',
+                avatar: 'assets/img/av_2.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 22:51',
                 messages: [
@@ -49,13 +49,13 @@ const app = new Vue({
                     },
                     {
                         date: '20/03/2020 11:30:55',
-                        text: 'Bene grazie! Stasera ci vediamo?',
+                        text: 'Bene grazie! Stasera ci vediamo? 🙃',
                         status: 'sent',
                         check: 3
                     },
                     {
                         date: '20/03/2020 11:35:00',
-                        text: 'Mi piacerebbe ma devo andare a fare la spesa.',
+                        text: 'Mi piacerebbe ma devo andare a fare la spesa 😔',
                         status: 'received',
                         check: 0
                     },
@@ -68,9 +68,9 @@ const app = new Vue({
                 ],
             },
             {
-                name: 'Luciano',
-                last_name: 'Rosati',
-                avatar: 'assets/img/av_2.jpeg',
+                name: 'Roberta',
+                last_name: 'S.',
+                avatar: 'assets/img/av_3.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 21:10',
                 messages: [
@@ -94,7 +94,7 @@ const app = new Vue({
                     },
                     {
                         date: '28/03/2020 08:58:22',
-                        text: 'Ahahahaha',
+                        text: '😂😂😂',
                         status: 'sent',
                         check: 3
                     }
@@ -109,36 +109,55 @@ const app = new Vue({
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
-                        text: 'Lo sai che ha aperto una nuova pizzeria?',
+                        text: 'Lo sai che ha aperto una nuova pizzeria? 🍕 ',
                         status: 'sent',
                         check: 3
                     },
                     {
                         date: '10/01/2020 15:50:00',
-                        text: 'Si, ma preferirei andare al cinema',
+                        text: 'Si, ma andiamo al cinema 💃🏼',
                         status: 'received',
                         check: 0
                     }
                 ],
             },
+            {
+                name: 'Ale',
+                last_name: 'Bro',
+                avatar: 'assets/img/av_5.jpeg',
+                visible: true,
+                access: 'ultimo accesso ieri alle 20:42',
+                messages: [
+                    {
+                        date: '10/01/2020 15:50:00',
+                        text: 'Si, ma andiamo al cinema 💃🏼',
+                        status: 'received',
+                        check: 0
+                        
+                    }
+                    
+                ],
+            }
         ],
         answer:[
-            'Ciao',
+            'Ciao 👋🏽',
             'Ciao, come stai?',
-            'Vuoi fare la baldoria stasera?',
-            'Andiamo al sushi?',
-            'Madici a me?!',
-            'Sai cosa fanno due api sulla luna? La Luna di miele!',
-            'Cosa dice la chiappa destra alla chiappa sinistra? Che puzza in corridoio',
-            'Alcuni portano la felicità ovunque vadano. Altri quando se ne vanno.',
-            'Ricordati i LIMONIIIIIIIIII!',
+            'Vuoi fare la baldoria stasera? 🎉 ',
+            'Andiamo al sushi? 🍣',
+            'Ma dici a me?! 🤔',
+            'Sai cosa fanno due api sulla luna? La Luna di miele! 😂',
+            'Cosa dice la chiappa destra alla chiappa sinistra? Che puzza in corridoio 💩',
+            'Alcuni portano la felicità ovunque vadano. Altri quando se ne vanno 😂',
+            'Ricordati i LIMONIIIIIIIIII! 🍋',
             'Cosa facciamo a ferragosto?',
-            'Prenotiamo un viaggio?',
+            'Prenotiamo un viaggio? ✈️',
             'Cosa facciamo questo weekend?',
             'Lavori domani?',
-            'Ho bisogno del tuo aiuto',
+            'Ho bisogno del tuo aiuto  🙏🏼',
             'Preparati vengo a prenderti!',
-            `Tra mezz'ora sono da te!`
+            `Tra mezz'ora sono da te!`,
+            '😂😂😂',
+            '👍🏽'
         ]
     },
     methods: {
@@ -175,7 +194,7 @@ const app = new Vue({
             return ora.substring(0,5);
         },
 
-
+        //numero random
         getRandom: function(min, max){
             return Math.round(Math.random() * (max - min - 1) + min);
         },
