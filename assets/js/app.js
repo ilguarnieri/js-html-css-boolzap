@@ -298,7 +298,8 @@ const app = new Vue({
                 date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                 text,
                 status,
-                check
+                check,
+                optionMsg: false
             }            
             return messageComplete;
         },
