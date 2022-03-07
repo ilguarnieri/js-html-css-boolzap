@@ -9,25 +9,24 @@ const app = new Vue({
         contacts: [
             {
                 name: 'Mamma',
-                last_name: '',
                 avatar: 'assets/img/av_1.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 18:05',
                 messages: [
                     {
-                        date: '10/01/2020 10:30:55',
+                        date: '18/01/2022 10:30:55',
                         text: 'Hai portato a spasso il cane?',
                         status: 'received',
                         check: 0
                     },
                     {
-                        date: '10/01/2020 10:31:00',
+                        date: '18/01/2022 10:31:00',
                         text: 'Ricordati di dargli da mangiare',
                         status: 'received',
                         check: 0
                     },
                     {
-                        date: '10/01/2020 11:02:22',
+                        date: '18/01/2022 11:02:22',
                         text: 'Tutto fatto! 👍🏽',
                         status: 'sent',
                         check: 3
@@ -36,31 +35,30 @@ const app = new Vue({
             },
             {
                 name: 'Enzo',
-                last_name: 'Millarte',
                 avatar: 'assets/img/av_2.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 22:51',
                 messages: [
                     {
-                        date: '20/03/2020 11:30:00',
+                        date: '20/02/2022 11:30:00',
                         text: 'Ciao Angelo, come stai?',
                         status: 'received',
                         check: 0
                     },
                     {
-                        date: '20/03/2020 11:30:55',
+                        date: '20/02/2022 11:30:55',
                         text: 'Bene grazie! Stasera ci vediamo? 🙃',
                         status: 'sent',
                         check: 3
                     },
                     {
-                        date: '20/03/2020 11:35:00',
+                        date: '20/02/2022 11:35:00',
                         text: 'Mi piacerebbe ma devo andare a fare la spesa 😔',
                         status: 'received',
                         check: 0
                     },
                     {
-                        date: '20/03/2020 11:38:00',
+                        date: '20/02/2022 11:38:05',
                         text: 'Dai ci vediamo nel weekend!',
                         status: 'received',
                         check: 0
@@ -69,31 +67,30 @@ const app = new Vue({
             },
             {
                 name: 'Roberta',
-                last_name: 'S.',
                 avatar: 'assets/img/av_3.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 21:10',
                 messages: [
                     {
-                        date: '28/03/2020 08:10:40',
+                        date: '01/03/2022 08:10:40',
                         text: 'La Marianna va in campagna',
                         status: 'received',
                         check: 0
                     },
                     {
-                        date: '28/03/2020 08:20:10',
+                        date: '01/03/2022 08:20:10',
                         text: 'Sicuro di non aver sbagliato chat?',
                         status: 'sent',
                         check: 3
                     },
                     {
-                        date: '28/03/2020 08:45:22',
+                        date: '01/03/2022 08:45:22',
                         text: 'Ah scusa!',
                         status: 'received',
                         check: 0
                     },
                     {
-                        date: '28/03/2020 08:58:22',
+                        date: '01/03/2022 08:58:22',
                         text: '😂😂😂',
                         status: 'sent',
                         check: 3
@@ -101,8 +98,7 @@ const app = new Vue({
                 ],
             },
             {
-                name: 'Donato',
-                last_name: 'Palmisano',
+                name: 'Samuele',
                 avatar: 'assets/img/av_4.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 20:42',
@@ -122,21 +118,36 @@ const app = new Vue({
                 ],
             },
             {
-                name: 'Ale',
-                last_name: 'Bro',
+                name: 'Massimo',
                 avatar: 'assets/img/av_5.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 20:42',
                 messages: [
                     {
-                        date: '10/01/2020 15:50:00',
-                        text: 'Si, ma andiamo al cinema 💃🏼',
+                        date: '15/02/2022 18:50:10',
+                        text: 'Quando torni a casa?',
                         status: 'received',
-                        check: 0
-                        
-                    }
-                    
-                ],
+                        check: 0                        
+                    },
+                    {
+                        date: '15/02/2022 18:51:25',
+                        text: 'Tra un oretta',
+                        status: 'sent',
+                        check: 3                      
+                    },
+                    {
+                        date: '15/02/2022 18:52:04',
+                        text: 'Chiamami appena puoi',
+                        status: 'received',
+                        check: 0                        
+                    },
+                    {
+                        date: '15/02/2022 18:55:45',
+                        text: '👍🏽👍🏽👍🏽',
+                        status: 'sent',
+                        check: 3                      
+                    },                
+                ]
             }
         ],
         answer:[
@@ -231,7 +242,9 @@ const app = new Vue({
             const contact = this.contacts[index];
 
             contact.access = 'online';
+            //choose answer
             const answerIndex = this.getRandom(0, this.answer.length);
+            //crete msg
             const newAnswer = this.createMsg(this.answer[answerIndex], 'received', 0);
 
             setTimeout(() => {
@@ -263,6 +276,36 @@ const app = new Vue({
                 check
             }            
             return messageComplete;
+        },
+
+
+        //filter contacts
+        filtracontatti: function(){
+            const inputSearch = this.inputSearch.trim().toLowerCase();
+
+            this.contacts.forEach(el => {
+                if(el.name.toLowerCase().includes(inputSearch)){
+                    el.visible = true;
+                }else{
+                    el.visible = false;
+                }
+            })
+        },
+
+
+
+
+
+
+        
+
+
+        //ordinamento chat
+        compare: function ( a, b ) {
+            if ( a.ordinaryDate > b.ordinaryDate ){
+                return 1;
+            }
+            return -1;
         }
-    }
+    },
 })
