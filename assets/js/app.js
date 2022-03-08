@@ -3,9 +3,11 @@ const app = new Vue({
     data: {
         darkMode: false,
         arrowSearch: false,
+        formContact: false,
         activeIndex: null,
         messageText: '',
         inputSearch: '',
+        newNameContact: '',
         contacts: [
             {
                 name: 'Mamma',
@@ -323,6 +325,34 @@ const app = new Vue({
         deleteMessage: function (index){
             this.contacts[this.activeIndex].messages.splice(index, 1);
         },
+
+
+        //new contact
+        newMsgContact: function(){
+
+            const name = this.newNameContact.trim();
+            const index = this.contacts.length;
+
+            if(name != ''){
+                const newContact = {
+                    name,
+                    avatar: 'assets/img/av_6.jpeg',
+                    visible: true,
+                    access: `ultimo accesso ieri alle ${this.getRandom(10, 23)}:${this.getRandom(10, 59)}`,
+                    messages: [],
+                }
+                this.contacts.push(newContact);
+                this.newNameContact = '';
+                this.formContact = false;
+                this.activeIndex = index;
+            }else{
+                alert('Inserisci un nome valido');
+                this.newNameContact = '';
+            }
+            console.log(this.contacts)
+        },
+
+        
 
 
 

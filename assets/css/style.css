@@ -494,6 +494,70 @@ body{
     display: none;
 }
 
+/* new contact */
+.contact-wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 0 1px 20px var(--ag-msg-shadow);   
+    user-select: none; 
+}
+
+.newContact{
+    width: 400px;
+    height: 350px;
+    background-color: var(--ag-header);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.newContact h1{
+    font-size: 30px;
+    color: var(--ag-text-name);
+}
+
+.img_form{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.newContact .input_text{
+    width: 80%;
+    font-size: 18px;
+    line-height: 35px;
+    text-align: center;
+    color: black;
+}
+
+.cta-createchat{
+    border: none;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    background-color: var(--ag-icon);
+    border-radius: 999px;
+    padding: 5px 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.close-window{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 22px;
+    color: var(--ag-icon);
+    cursor: pointer;
+}
 
 /******************************* media queery *******************************/
 @media screen and (max-width: 1440px){

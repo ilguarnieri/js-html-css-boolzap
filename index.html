@@ -17,8 +17,9 @@
     
     <section id="app" class="app-wrapper">
 
+        <!-- side bar -->
         <div class="side-bar col-side">
-            <!-- side bar -->
+            <!-- header side bar -->
             <div class="header-bar">
                 <figure class="avatar avatar-header">
                     <img src="/assets/img/user.jpeg" alt="user">
@@ -26,7 +27,7 @@
                 <div class="header_option">
                     <i v-if="darkMode" class="fas fa-sun" @click="colorMode"></i>
                     <i v-else class="fas fa-moon" @click="colorMode"></i>                    
-                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-comment-alt" @click="formContact = !formContact"></i>
                     <i class="fas fa-ellipsis-v"></i>
                 </div>
             </div>
@@ -168,7 +169,19 @@
                     <p><i class="fas fa-laptop"></i> Chiama dal computer con BoolzApp. <a href="#">Scarica l'applicazione.</a></p>
                 </div>
             </div>
-                        
+            
+            <!-- form new contact -->
+            <div class="contact-wrapper" :class="formContact ? '' : 'd-none'">
+                <div class="newContact">
+                    <figure class="img_form">
+                        <img src="assets/img/av_6.jpeg" alt="anonymous">
+                    </figure>
+                    <h1>Nuova chat</h1>
+                    <input type="text" class="input_text" v-model="newNameContact" placeholder="Inserisci il nome del nuovo contatto">
+                    <button class="cta-createchat" @click="newMsgContact">Crea</button>
+                    <i class="fas fa-times-circle close-window" @click="formContact = false"></i>
+                </div>
+            </div>
         </div>
     </section>
 
