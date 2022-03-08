@@ -28,7 +28,6 @@
                     <i v-if="darkMode" class="fas fa-sun" @click="colorMode"></i>
                     <i v-else class="fas fa-moon" @click="colorMode"></i>                    
                     <i class="fas fa-comment-alt" @click="formContact = !formContact"></i>
-                    <i class="fas fa-ellipsis-v"></i>
                 </div>
             </div>
 
@@ -78,7 +77,7 @@
             <div v-if="activeIndex != null" class="user-chat">
 
                 <!-- header chat -->
-                <div class="header-bar">
+                <div class="header-bar" @mouseleave="headerOption = false">
                     <!-- info -->
                     <div class="info_chat">                        
                         <!-- img user -->
@@ -95,8 +94,11 @@
                         
                     <!-- icon chat -->
                     <div class="icon-chat">
-                        <i class="fas fa-search"></i>
-                        <i class="fas fa-ellipsis-v"></i>
+                        <i class="fas fa-ellipsis-v" @click="headerOption = !headerOption"></i>
+                        <div class="option-wrapper" :class="headerOption ? '' : 'd-none'">
+                            <p @click="deleteMessage(0, 999)">Elimina messaggi</p>
+                            <p>Elimina chat</p>
+                        </div>
                     </div>
                 </div>
 
@@ -127,9 +129,7 @@
                                 <div class="msg_option">
                                     <i class="fas fa-angle-down icon_arrow" @click="msg.optionMsg = !msg.optionMsg"></i>
                                     <div class="option-wrapper" v-if="msg.optionMsg">
-                                        <p>Rispondi</p>
-                                        <p>Inoltra messaggio</p>
-                                        <p @click="deleteMessage(indexMsg)">Elimina messaggio</p>
+                                        <p @click="deleteMessage(indexMsg, 1)">Elimina messaggio</p>
                                     </div>
                                 </div>
                             </div>

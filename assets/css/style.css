@@ -75,6 +75,7 @@ body{
     align-items: center;
     padding: 10px 16px;
     gap: 10px;
+    position: relative;
 }
 
 
@@ -558,6 +559,11 @@ body{
     font-size: 22px;
     color: var(--ag-icon);
     cursor: pointer;
+}
+
+.icon-chat .option-wrapper{
+    top: 30px;
+    right: 15px;
 }
 
 /******************************* media queery *******************************/

@@ -5,6 +5,7 @@ const app = new Vue({
         arrowSearch: false,
         formContact: false,
         activeIndex: null,
+        headerOption: false,
         messageText: '',
         inputSearch: '',
         newNameContact: '',
@@ -14,7 +15,7 @@ const app = new Vue({
                 avatar: 'assets/img/av_1.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 18:05',
-                ordinaryDate: '',
+                ordinaryDate: undefined,
                 messages: [
                     {
                         date: '18/01/2022 10:30:55',
@@ -44,7 +45,7 @@ const app = new Vue({
                 avatar: 'assets/img/av_2.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 22:51',
-                ordinaryDate: '',
+                ordinaryDate: undefined,
                 messages: [
                     {
                         date: '20/02/2022 11:30:00',
@@ -81,7 +82,7 @@ const app = new Vue({
                 avatar: 'assets/img/av_3.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 21:10',
-                ordinaryDate: '',
+                ordinaryDate: undefined,
                 messages: [
                     {
                         date: '01/03/2022 08:10:40',
@@ -118,7 +119,7 @@ const app = new Vue({
                 avatar: 'assets/img/av_4.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 20:42',
-                ordinaryDate: '',
+                ordinaryDate: undefined,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -141,7 +142,7 @@ const app = new Vue({
                 avatar: 'assets/img/av_5.jpeg',
                 visible: true,
                 access: 'ultimo accesso ieri alle 20:42',
-                ordinaryDate: '',
+                ordinaryDate: undefined,
                 messages: [
                     {
                         date: '15/02/2022 18:50:10',
@@ -253,12 +254,11 @@ const app = new Vue({
                 
                 const newMessage = this.createMsg(this.messageText, 'sent', 1);
                 msg.push(newMessage);
-                this.contacts[index].ordinaryDate = this.createOrdinaryNumber('15/02/2022 18:50:10');
 
                 this.messageText = '';
                 
                 setTimeout(() => {
-                    msg[msgIndex].check = 2;                    
+                    msg[msgIndex].check = 2;
                 }, 1000);
 
                 setTimeout(() => {
@@ -291,6 +291,9 @@ const app = new Vue({
             setTimeout(() => {
                 contact.access = 'online';
                 msg.push(newAnswer);
+                this.contacts[index].ordinaryDate = this.createOrdinaryNumber(newAnswer.date);
+                this.contacts.sort(this.compare);
+                this.activeIndex = 0;
             }, 2000);
 
             setTimeout(() => {
@@ -328,8 +331,15 @@ const app = new Vue({
 
 
         //delete msg
-        deleteMessage: function (index){
-            this.contacts[this.activeIndex].messages.splice(index, 1);
+        deleteMessage: function (index, howMany){
+
+            let allMsg = 1;
+
+            if(howMany != 1){                
+                allMsg = this.contacts[this.activeIndex].messages.length;
+            }
+
+            this.contacts[this.activeIndex].messages.splice(index, allMsg);
         },
 
 
@@ -345,6 +355,7 @@ const app = new Vue({
                     avatar: 'assets/img/av_6.jpeg',
                     visible: true,
                     access: `ultimo accesso ieri alle ${this.getRandom(10, 23)}:${this.getRandom(10, 59)}`,
+                    ordinaryDate: undefined,
                     messages: [],
                 }
                 this.contacts.push(newContact);
@@ -359,8 +370,7 @@ const app = new Vue({
         },
 
 
-        createOrdinaryNumber: function(date){            
-
+        createOrdinaryNumber: function(date){
             if(date != ''){
                 const array = [];
                 const arrayDate = date.split(' ')[0].split('/');
@@ -373,29 +383,22 @@ const app = new Vue({
                 }
                 return array.concat(arrayTime).join('');
             }else{
-                return '99999999999999';
+                return undefined;
             }
         },
-
-        
-
-
-        
-
-
-
-
-
-
-
 
 
         //ordinamento chat
         compare: function ( a, b ) {
-            if ( a.ordinaryDate > b.ordinaryDate ){
-                return 1;
+            if ( a.ordinaryDate < b.ordinaryDate ){
+                console.log('a')
+                return 1;                
             }
             return -1;
         }
     },
+    mounted(){
+        this.contacts.forEach(el => el.ordinaryDate = this.createOrdinaryNumber(el.messages[(el.messages.length - 1)].date));
+        this.contacts.sort(this.compare);
+    }
 })
