@@ -14,8 +14,7 @@ const app = new Vue({
                 name: 'Mamma',
                 avatar: 'assets/img/av_1.jpeg',
                 visible: true,
-                access: 'ultimo accesso ieri alle 18:05',
-                ordinaryDate: undefined,
+                access: '',
                 messages: [
                     {
                         date: '18/01/2022 10:30:55',
@@ -44,8 +43,7 @@ const app = new Vue({
                 name: 'Enzo',
                 avatar: 'assets/img/av_2.jpeg',
                 visible: true,
-                access: 'ultimo accesso ieri alle 22:51',
-                ordinaryDate: undefined,
+                access: '',
                 messages: [
                     {
                         date: '20/02/2022 11:30:00',
@@ -81,8 +79,7 @@ const app = new Vue({
                 name: 'Roberta',
                 avatar: 'assets/img/av_3.jpeg',
                 visible: true,
-                access: 'ultimo accesso ieri alle 21:10',
-                ordinaryDate: undefined,
+                access: '',
                 messages: [
                     {
                         date: '01/03/2022 08:10:40',
@@ -118,8 +115,7 @@ const app = new Vue({
                 name: 'Samuele',
                 avatar: 'assets/img/av_4.jpeg',
                 visible: true,
-                access: 'ultimo accesso ieri alle 20:42',
-                ordinaryDate: undefined,
+                access: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -141,8 +137,7 @@ const app = new Vue({
                 name: 'Massimo',
                 avatar: 'assets/img/av_5.jpeg',
                 visible: true,
-                access: 'ultimo accesso ieri alle 20:42',
-                ordinaryDate: undefined,
+                access: '',
                 messages: [
                     {
                         date: '15/02/2022 18:50:10',
@@ -264,7 +259,6 @@ const app = new Vue({
                 setTimeout(() => {
                     this.reply(index, msg, msgIndex);
                 }, 2000);
-
             }
         },
         
@@ -291,9 +285,6 @@ const app = new Vue({
             setTimeout(() => {
                 contact.access = 'online';
                 msg.push(newAnswer);
-                this.contacts[index].ordinaryDate = this.createOrdinaryNumber(newAnswer.date);
-                this.contacts.sort(this.compare);
-                this.activeIndex = 0;
             }, 2000);
 
             setTimeout(() => {
@@ -332,14 +323,19 @@ const app = new Vue({
 
         //delete msg
         deleteMessage: function (index, howMany){
-
             let allMsg = 1;
-
             if(howMany != 1){                
                 allMsg = this.contacts[this.activeIndex].messages.length;
             }
-
             this.contacts[this.activeIndex].messages.splice(index, allMsg);
+        },
+
+
+        //delete chat
+        deleteChat: function(){
+            this.contacts.splice(this.activeIndex, 1);
+            this.activeIndex = null;
+            this.headerOption = false;
         },
 
 
@@ -368,37 +364,8 @@ const app = new Vue({
             }
             console.log(this.contacts)
         },
-
-
-        createOrdinaryNumber: function(date){
-            if(date != ''){
-                const array = [];
-                const arrayDate = date.split(' ')[0].split('/');
-                const arrayTime = date.split(' ')[1].split(':');
-
-                let index = arrayDate.length - 1;
-                while(index >= 0){
-                    array.push(arrayDate[index]);
-                    index --;
-                }
-                return array.concat(arrayTime).join('');
-            }else{
-                return undefined;
-            }
-        },
-
-
-        //ordinamento chat
-        compare: function ( a, b ) {
-            if ( a.ordinaryDate < b.ordinaryDate ){
-                console.log('a')
-                return 1;                
-            }
-            return -1;
-        }
     },
     mounted(){
-        this.contacts.forEach(el => el.ordinaryDate = this.createOrdinaryNumber(el.messages[(el.messages.length - 1)].date));
-        this.contacts.sort(this.compare);
+        this.contacts.forEach(el => el.access = `ultimo accesso ieri alle ${this.getRandom(10,23)}:${this.getRandom(10,59)}`);
     }
 })

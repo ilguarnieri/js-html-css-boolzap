@@ -97,7 +97,7 @@
                         <i class="fas fa-ellipsis-v" @click="headerOption = !headerOption"></i>
                         <div class="option-wrapper" :class="headerOption ? '' : 'd-none'">
                             <p @click="deleteMessage(0, 999)">Elimina messaggi</p>
-                            <p>Elimina chat</p>
+                            <p @click="deleteChat">Elimina chat</p>
                         </div>
                     </div>
                 </div>
