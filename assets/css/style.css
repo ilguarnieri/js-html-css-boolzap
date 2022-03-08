@@ -494,13 +494,14 @@ body{
     display: none;
 }
 
-/* new contact */
+/******************************* new contact *******************************/
 .contact-wrapper{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 10px;
+    overflow: hidden;
     box-shadow: 0 1px 20px var(--ag-msg-shadow);   
     user-select: none; 
 }
