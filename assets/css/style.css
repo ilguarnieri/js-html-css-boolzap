@@ -169,6 +169,7 @@ body{
     flex-grow: 1;
     gap: 1px;
     border-bottom: 1px solid var(--ag-border);   
+    overflow: hidden;
 }
 
 .contact_name_date{
@@ -193,6 +194,8 @@ body{
     display: flex;
     align-items: center;
     gap: 4px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .msg_preview > *{
