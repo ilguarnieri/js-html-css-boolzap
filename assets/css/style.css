@@ -566,6 +566,10 @@ body{
     right: 15px;
 }
 
+.z-999{
+    z-index: 999;
+}
+
 /******************************* media queery *******************************/
 @media screen and (max-width: 1440px){
     .app-wrapper{

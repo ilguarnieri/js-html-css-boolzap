@@ -93,7 +93,7 @@
                     </div>
                         
                     <!-- icon chat -->
-                    <div class="icon-chat">
+                    <div class="icon-chat" :class="headerOption ? 'z-999' : ''">
                         <i class="fas fa-ellipsis-v" @click="headerOption = !headerOption"></i>
                         <div class="option-wrapper" :class="headerOption ? '' : 'd-none'">
                             <p @click="deleteMessage(0, 999)">Elimina messaggi</p>
@@ -107,7 +107,7 @@
                     <div  class="messages-wrapper">
 
                         <!-- msg -->                     
-                        <div  v-for="(msg, indexMsg) in contacts[activeIndex].messages" :class="msg.status" class="message">
+                        <div  v-for="(msg, indexMsg) in contacts[activeIndex].messages" :class="[msg.status, msg.optionMsg ? 'z-999' : '']" class="message">
 
                             <!-- text -->
                             <div class="msg_text">
